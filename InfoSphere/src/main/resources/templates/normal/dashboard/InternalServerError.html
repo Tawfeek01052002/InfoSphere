@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Internal Server Error</title>
+</head>
+<body>
+
+	<section>
+		<div class="container internal-server-error-img m-auto text-center">
+			<div class="card innerDiv-internal-server-error-img">
+				<img th:src="@{'/images/internal-server-error-500.svg'}"
+					alt="Internal Server Error" />
+				<p class="mt-0 mb-4">Internal Server Error</p>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+</html>

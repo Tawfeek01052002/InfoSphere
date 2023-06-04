@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home - Smart Contact Manager</title>
+</head>
+<body>
+
+	<section>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				document.querySelector("#home").classList.add('activating');
+			});
+		</script>
+		<div class="container text-center bg-c-lite-green"
+			style="border-radius: 5px; padding-top: 30px;">
+			<img src="/images/UserProfile.png" alt="UserProfile" width="300px"
+				class="m-auto" /> <br> <a
+				th:href="@{/user/dashboard/addContact}">
+				<button type="button"
+					class="btn btn-block w-75 m-4 p-3 fs-4 text-white"
+					style="background: #18c29c;">ADD NEW CONTACT</button>
+			</a>
+		</div>
+
+
+	</section>
+
+
+</body>
+</html>

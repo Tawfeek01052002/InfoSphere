@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>View Contact - Smart Contact Manager</title>
+</head>
+<body>
+
+	<section>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",
+					function() {
+						document.querySelector(".icon_side").classList
+								.remove('active');
+						document.querySelector("#viewContact").classList
+								.add('activating');
+					});
+		</script>
+
+		<div class="card m-auto bg-white" style="max-width: initial;">
+			<div class="card-body table-responsive-xl">
+				<h1 class="text-center mt-2">Contact List</h1>
+
+				<div class="search-container my-3">
+					<input onkeyup="search()" type="text" id="search-input"
+						class="form-control" placeholder="Search your contact" />
+
+					<div class="search-result"></div>
+				</div>
+				<table class="table m-auto table-hover" style="width: 90%">
+					<thead>
+						<tr>
+							<th scope="col">Contact ID</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Phone</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c: ${contacts}">
+							<th scope="row" th:text="${'SCM2020'+c.cId}"></th>
+							<td><img class="profileImage"
+								th:src="@{'/images/'+${c.imageUrl}}" alt="profile" /> <span
+								th:text="${c.name}"></span></td>
+							<td th:text="${c.email}"></td>
+							<td th:text="${c.phone}"></td>
+							<td><a th:href="@{'/user/contact/'+${c.cId}}"><button
+										type="button" class="btn btn-info mb-1 text-white">View</button></a>
+								<a th:href="@{'/user/update/'+${c.cId}}"><button
+										type="button" class="btn btn-primary mb-1">Update</button></a> <a
+								href="#" th:onclick="|deleteContact(${c.cId})|"><button
+										type="button" class="btn btn-danger mb-1">Delete</button></a></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Pagination  -->
+				<nav aria-label="Page navigation example m-auto ">
+					<ul class="pagination justify-content-center mt-3">
+						<li class="page-item" th:if="${currentPage>=1}"><a
+							class="page-link"
+							th:href="@{'/user/dashboard/viewContact/'+${currentPage-1}}"
+							href="#">Previous</a></li>
+
+						<li th:if="${currentPage>=1}" class="page-item"><a
+							class="page-link me-2 ms-2" href="#"
+							th:href="@{'/user/dashboard/viewContact/'+${currentPage-1}}"><span
+								th:text="${currentPage}"></span></a></li>
+
+						<li class="page-item"><a class="page-link me-2 ms-2 active"
+							href="#" th:if="${totalContacts>=1}"
+							th:href="@{'/user/dashboard/viewContact/'+${currentPage}}"><span
+								th:text="${currentPage+1}"></span></a></li>
+
+						<li th:if="${currentPage<totalPages-1}" class="page-item"><a
+							class="page-link me-2 ms-2" href="#"
+							th:href="@{'/user/dashboard/viewContact/'+${currentPage+1}}"><span
+								th:text="${currentPage+2}"></span></a></li>
+
+						<li th:if="${currentPage<totalPages-1}" class="page-item"><a
+							class="page-link" href="#"
+							th:href="@{'/user/dashboard/viewContact/'+${currentPage+1}}">Next</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+	</section>
+
+
+</body>
+</html>

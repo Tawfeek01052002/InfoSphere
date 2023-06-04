@@ -1,0 +1,5 @@
+com\smartmanager\controllers\homeController.class
+com\smartmanager\entity\Contact.class
+com\smartmanager\entity\User.class
+com\smartmanager\SmartContactManagersApplication.class
+com\smartmanager\dao\UserRepository.class
