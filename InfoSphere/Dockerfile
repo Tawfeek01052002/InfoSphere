@@ -5,7 +5,6 @@ WORKDIR /InfoSphere
 
 # Copy only the necessary files into the container
 COPY pom.xml .
-COPY src ./InfoSphere/src
 
 # Run Maven build
 RUN mvn clean package -DskipTests
