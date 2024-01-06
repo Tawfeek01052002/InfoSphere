@@ -3,9 +3,10 @@
 	th:replace="normal/base::layout(~{::section})">
 <head>
 <meta charset="UTF-8" />
-<title>Home - Smart Contact Manager</title>
+<title>Home | InfoSphere</title>
 </head>
-<body>
+
+<body style="overflow: hidden;">
 
 	<section>
 		<script type="text/javascript">
@@ -15,7 +16,7 @@
 		</script>
 		<div class="container text-center bg-c-lite-green"
 			style="border-radius: 5px; padding-top: 30px;">
-			<img src="/images/UserProfile.png" alt="UserProfile" width="300px"
+			<img src="/images/UserProfile.png" alt="UserProfile" width="30%"
 				class="m-auto" /> <br> <a
 				th:href="@{/user/dashboard/addContact}">
 				<button type="button"

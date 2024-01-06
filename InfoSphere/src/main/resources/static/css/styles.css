@@ -23,6 +23,9 @@ body {
 
 /* for Home  */
 
+.homebody{
+	overflow:"hidden" !important; 
+}
 .context {
     width: 100%;
     position: absolute;
@@ -170,3 +173,13 @@ body {
 	background: #ffffff;
 }
 
+.aboutData{
+	padding:16px;
+	line-height:2;
+	font-size: 18px;
+}
+.aboutImg{
+	margin:10px;
+	border-radius:20%;
+	padding: 20px;
+}

@@ -41,19 +41,19 @@ public class homeController {
 
 	@GetMapping("/")
 	public String getHome(Model model) {
-		model.addAttribute("title", "Home - Smart Contact Manager");
+		model.addAttribute("title", "Home | InfoSphere");
 		return "home";
 	}
 
 	@GetMapping("/about")
 	public String getAbout(Model model) {
-		model.addAttribute("title", "About - Smart Contact Manager");
+		model.addAttribute("title", "About | InfoSphere");
 		return "about";
 	}
 
 	@GetMapping("/signup")
 	public String getSignUp(Model model) {
-		model.addAttribute("title", "Register - Smart Contact Manager");
+		model.addAttribute("title", "Register | InfoSphere");
 		model.addAttribute("user", new User());
 		return "signup";
 	}
@@ -101,7 +101,7 @@ public class homeController {
 
 	@GetMapping("/signin")
 	public String getLogin(Model model) {
-		model.addAttribute("title", "Login - Smart Contact Manager");
+		model.addAttribute("title", "Login | InfoSphere");
 		return "signin";
 	}
 
@@ -130,11 +130,12 @@ public class homeController {
 			} else {
 				otpRepositry.save(new OTP(email, sendOtp));
 			}
-
 			if (user != null) {
+				System.out.println("The OTP is Updated");
 				sendEmail.SendingEmail("InfoSphere Reset Password OTP - " + sendOtp, email,
 						"Reset Password - InfoSphere");
 				model.addAttribute("isMailSent", true);
+				System.out.println("The OTP is Send");
 				model.addAttribute("send", "Email has been send to your registered email address");
 				model.addAttribute("email", email);
 				return "forgetPassword";

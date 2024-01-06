@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Setting -| InfoSphere</title>
+</head>
+<body>
+
+	<section>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",
+					function() {
+						document.querySelector(".icon_side").classList
+								.remove('active');
+						document.querySelector("#settings").classList
+								.add('activating');
+					});
+		</script>
+		<div class="card m-auto" style="max-width: 100%;">
+			<div class="card-body">
+
+				<div th:if="${session.message}"
+					th:classappend="${session.message.type}" class="alert" role="alert">
+					<p class="text-center" th:text="${session.message.content}"></p>
+
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+
+				</div>
+
+				<h1 class="text-center mt-2">Change Password</h1>
+
+				<form action="#" th:action="@{/user/changePassword}" method="post">
+
+					<div class="row m-2">
+						<div class="col-lg-3">
+							<label for="oldPassword" class="p-2">Old Password</label>
+
+						</div>
+						<div class="col-md-6">
+							<input type="text" id="oldPassword" name="oldPassword"
+								placeholder="Enter old password" class="form-control" required />
+
+						</div>
+
+					</div>
+
+					<div class="row m-2">
+						<div class="col-lg-3">
+							<label for="newPassword" class="p-2">New Password</label>
+
+						</div>
+						<div class="col-md-6">
+							<input type="text" id="newPassword" name="newPassword"
+								placeholder="Enter new password" class="form-control" required />
+
+						</div>
+
+					</div>
+
+
+					<div class="row m-2">
+						<div class="col-lg-3">
+							<label for="reNewPassword" class="p-2">Re-Enter New
+								Password</label>
+
+						</div>
+						<div class="col-md-6">
+							<input type="text" id="reNewPassword" name="reNewPassword"
+								placeholder="Re-Enter new password" class="form-control"
+								required />
+
+						</div>
+
+					</div>
+
+					<div class="buttons text-center">
+						<button type="submit" class="btn btn-success m-2">Change</button>
+						<button type="reset" class="btn btn-warning m-2 text-white">Reset</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</section>
+
+
+</body>
+</html>
