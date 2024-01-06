@@ -4,11 +4,13 @@ FROM maven:3.8.5-openjdk-17 AS build
 # Set the working directory to /InfoSphere
 WORKDIR /InfoSphere
 
-# Copy the contents of the current directory to /InfoSphere in the image
-COPY . .
+# Copy the Maven configuration files first to leverage Docker cache
+COPY pom.xml .
+COPY mvnw .
+COPY .mvn .mvn
 
-# Debugging: List files in the current directory
-RUN ls -la
+# Copy the source code
+COPY src src
 
 # Run the Maven build within the /InfoSphere directory
 RUN mvn clean package -DskipTests
