@@ -2,9 +2,9 @@
 FROM maven:3.8.5-openjdk-17 AS build
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /InfoSphere
 
-# Copy the contents of the current directory to /app in the image
+# Copy the contents of the current directory to /InfoSphere in the image
 COPY . .
 
 # Run the Maven build within the /app directory
@@ -14,10 +14,10 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17.0.1-jdk-slim
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /InfoSphere
 
 # Copy the compiled JAR file from the build image
-COPY --from=build /app/InfoSphere/target/demo.jar demo.jar
+COPY --from=build /InfoSphere/target/demo.jar demo.jar
 
 # Expose the application port
 EXPOSE 8080
