@@ -1,12 +1,9 @@
-FROM maven:3.9.2-eclipse-temurin-170-alpine as builder 
+FROM openjdk:11-jre-slim
 
-COPY ./src src/ 
-COPY ./pom.xml pom.xml 
+WORKDIR /app
 
-RUN mvn clean package -DskipTests 
+COPY . /app
 
-FROM eclipse-temurin:17-jre-apline 
+EXPOSE 8080
 
-COPY --from=builder target/*.jar app.jar 
-EXPOSE 8080 
-CMD ["java","-jar,"app.jar"]
+CMD ["java", "-jar", "SmartContactManagers-0.0.1-SNAPSHOT.jar"]
